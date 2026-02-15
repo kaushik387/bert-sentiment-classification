@@ -1,63 +1,83 @@
-# bert-sentiment-classification
-🧠 Multi-class sentiment classification on 568k reviews using TF-IDF + Logistic Regression and fine-tuned BERT (50k samples).
-📌 Overview
-This project implements a large-scale multi-class sentiment classification pipeline on customer review data and compares:
-TF-IDF + Logistic Regression (Classical ML)
-Fine-Tuned BERT (Transformer Model)
-Target labels:
-Negative
-Neutral
-Positive
+# BERT Sentiment Classification
 
-📂 Dataset
-Total Dataset Size: 568,454 samples
-Train/Test Split used for classical models (~80/20)
-Test Set Size: 113,691 samples
-Highly imbalanced (Positive dominant)
-Due to computational constraints, 50,000 samples were used for BERT fine-tuning.
+Multi-class sentiment classification on 568,454 customer reviews using:
 
-🔬 Methodology
-1️⃣ Exploratory Data Analysis
-Class distribution
-Text length analysis
-Word frequency patterns
+- TF-IDF + Logistic Regression (Classical ML)
+- Fine-tuned BERT (Transformer Model)
 
-Notebook: 1_EDA.ipynb
-2️⃣ TF-IDF + Logistic Regression
+Target Labels:
+- Positive
+- Neutral
+- Negative
+
+---
+
+## 📊 Dataset
+
+- Total samples: 568,454
+- Highly imbalanced (Positive dominant)
+- Classical models: ~80/20 train-test split
+- BERT fine-tuning: 50,000 samples (due to computational constraints)
+
+---
+
+## 🔍 Methodology
+
+### 1️⃣ Exploratory Data Analysis
+- Class distribution analysis
+- Text length distribution
+- Word frequency patterns
+
+---
+
+### 2️⃣ TF-IDF + Logistic Regression
 
 Three feature configurations were tested:
 
-Feature Set	                     Accuracy	            Macro F1
-Summary Only	                       0.89	                0.71
-Review_Text Only                    0.87	                0.63
-Summary + Review_Text	        0.76	                0.31
+| Feature Set | Accuracy | Macro F1 |
+|-------------|----------|----------|
+| Summary Only | 0.89 | 0.71 |
+| Review_Text Only | 0.87 | 0.63 |
+| Summary + Review_Text | 0.76 | 0.31 |
 
-Observations:
-Summary-only performed best among classical models.
-Neutral class remained difficult to predict.
-Combining both text fields increased sparsity and reduced performance.
+**Observation:**  
+- Summary-only performed best among classical models.  
+- Neutral class was difficult to predict.  
+- Combining both text fields increased sparsity and reduced performance.
 
-Notebook: 2_TFIDF_Logistic_Regression.ipynb
-3️⃣ Fine-Tuned BERT (50,000 samples)
-Pre-trained BERT model fine-tuned for multi-class classification using PyTorch and HuggingFace Transformers.
-Final Performance (Validation)
-Accuracy: 0.897
-F1 Score: 0.893
-BERT demonstrated more balanced class prediction compared to classical ML models due to contextual embeddings.
+---
 
-Notebook: 3_BERT_Sent.ipynb
-📊 Model Comparison
-Model	                             Accuracy       	Macro F1
-Logistic Regression (Best)	       0.89	           0.71
-Fine-Tuned BERT	                       0.897	           0.893
+### 3️⃣ Fine-Tuned BERT (50,000 samples)
 
-Although classical ML achieved competitive accuracy, BERT significantly improved balanced performance across minority classes.
+- Pre-trained BERT model fine-tuned using PyTorch & HuggingFace Transformers
+- Validation Accuracy: **0.897**
+- Validation F1 Score: **0.893**
 
-🛠 Technologies Used
+BERT achieved more balanced class prediction compared to classical ML models due to contextual embeddings.
 
-Python
-Pandas
-Scikit-learn
-PyTorch
-HuggingFace Transformers
-Matplotlib
+---
+
+## 📈 Model Comparison
+
+| Model | Accuracy | Macro F1 |
+|--------|----------|----------|
+| Logistic Regression (Best) | 0.89 | 0.71 |
+| Fine-Tuned BERT | 0.897 | 0.893 |
+
+BERT significantly improved macro F1 score, especially for minority classes.
+
+---
+
+## 🛠 Tech Stack
+
+- Python
+- Scikit-learn
+- PyTorch
+- HuggingFace Transformers
+- Pandas / NumPy / Matplotlib
+
+---
+
+
+
+
